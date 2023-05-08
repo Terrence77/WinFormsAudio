@@ -1,0 +1,18 @@
+﻿<h1>Audio</h1>
+<h2>Press "Load Audio", Move timeline forward, note it reverts to current time.</h2>
+
+<TpsAudioPlayer @ref="tpsAudioPlayer" />
+<br />
+
+<a class="btn btn-primary btn-sm" @onclick="@(() => tpsAudioPlayer?.Reload(Url))">Load Audio</a>
+
+@code {
+    private int currentCount = 0;
+	TpsAudioPlayer? tpsAudioPlayer { get; set; }
+	string Url { get; set; }
+
+	protected override void OnInitialized()
+	{
+		Url = $"/audio/hm887.mp3";
+	}
+}

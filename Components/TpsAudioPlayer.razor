@@ -1,0 +1,27 @@
+﻿@*@inject IJSRuntime js;*@
+
+<audio @key="@(audioId)" controls autoplay id="audioplayer">
+	<source src="@Url">
+</audio>
+
+@code {
+	private string Url { get; set; }
+	private Guid audioId = Guid.NewGuid();
+
+	public void Reload(string url)
+	{
+		audioId = Guid.NewGuid();
+		Url = url;
+		InvokeAsync(StateHasChanged);
+	}
+	//public async Task PlayBackRate(double pbr)
+	//{
+	//	await js.InvokeVoidAsync("playbackrate", pbr);
+	//}
+	//public async Task AddSeconds(double secs)
+	//{
+	//	await js.InvokeVoidAsync("addseconds", secs);
+	//}
+	
+}
+
